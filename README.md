@@ -50,7 +50,7 @@ Prerequisites: AWS CLI v2 configured (`aws configure`), Docker running, an
 GROQ API key.
 
 ```bash
-export ANTHROPIC_API_KEY=sk-ant-...
+export GROQ_API_KEY=sk-ant-...
 export AWS_REGION=us-east-1        # optional, defaults to us-east-1
 export APP_NAME=document-analyzer  # optional
 cd deploy
@@ -59,7 +59,7 @@ cd deploy
 
 What the script does:
 1. Creates an ECR repository (if missing) and pushes the built Docker image.
-2. Stores `ANTHROPIC_API_KEY` as a **SecureString** in AWS Systems Manager
+2. Stores `GROQ_API_KEY` as a **SecureString** in AWS Systems Manager
    Parameter Store — the key never touches source control or the image.
 3. Creates an IAM role App Runner uses to pull from ECR.
 4. Creates (or redeploys) the App Runner service, injecting the API key as a
@@ -70,7 +70,7 @@ You can also do this from the AWS Console:
 1. **ECR** → create repository → push the image built from the `Dockerfile`.
 2. **App Runner** → Create service → Source: Container registry → select the
    ECR image → Port `8080`.
-3. Under **Environment variables**, add `ANTHROPIC_API_KEY` as a secret
+3. Under **Environment variables**, add `GROQ_API_KEY` as a secret
    (reference a Secrets Manager/SSM value — do not paste it as plain text).
 4. Deploy. App Runner gives you a public `https://xxxx.awsapprunner.com` URL.
 
