@@ -77,7 +77,7 @@ You can also do this from the AWS Console:
 ### Alternative: Elastic Beanstalk (Docker platform)
 1. `eb init -p docker document-analyzer`
 2. `eb create document-analyzer-env`
-3. Set the API key: `eb setenv ANTHROPIC_API_KEY=sk-ant-...`
+3. Set the API key: `eb setenv GROQ_API_KEY=sk-ant-...`
 4. `eb deploy`
 
 ## Security notes
