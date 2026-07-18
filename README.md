@@ -5,7 +5,7 @@ Upload a PDF or paste text, pick a mode, and watch Claude's response stream
 in live.
 
 ## Stack
-- **Backend:** Python, FastAPI, Anthropic SDK (`claude-sonnet-4-6`), streamed via SSE
+- **Backend:** Python, FastAPI, Groq API, streamed via SSE
 - **Frontend:** Vanilla HTML/CSS/JS (no build step), responsive, renders Markdown
 - **Container:** Single Docker image (FastAPI serves the static frontend + API)
 - **Deploy target:** AWS App Runner (ECR-backed)
@@ -47,7 +47,7 @@ Open http://localhost:8080
 
 ## 3. Deploy to AWS App Runner
 Prerequisites: AWS CLI v2 configured (`aws configure`), Docker running, an
-Anthropic API key.
+GROQ API key.
 
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
@@ -81,7 +81,7 @@ You can also do this from the AWS Console:
 4. `eb deploy`
 
 ## Security notes
-- The API key is read only from `ANTHROPIC_API_KEY`/SSM/Secrets Manager —
+- The API key is read only from `GROQ_KEY`/SSM/Secrets Manager —
   never hard-coded, never sent to the browser, and excluded from git via
   `.gitignore`.
 - CORS is restricted via `ALLOWED_ORIGINS`; set it to your real domain in
