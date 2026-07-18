@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document Analyzer — AI-Powered Insights</title>
+<link rel="stylesheet" href="styles.css" />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">◆</span>
+        <span class="brand-name">Document Analyzer</span>
+      </div>
+      <span class="badge"></span>
+    </header>
+
+    <main class="layout">
+      <section class="panel input-panel">
+        <h1>Analyze any document in seconds</h1>
+        <p class="subtitle">Upload a PDF or paste text, choose what you need, and watch the AI response stream in live.</p>
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-tab="upload" role="tab">Upload PDF</button>
+          <button class="tab" data-tab="paste" role="tab">Paste Text</button>
+        </div>
+
+        <div class="tab-panel" id="tab-upload">
+          <label class="dropzone" id="dropzone" for="fileInput">
+            <input type="file" id="fileInput" accept="application/pdf" hidden />
+            <div class="dropzone-icon">📄</div>
+            <div class="dropzone-text">
+              <strong>Click to choose a PDF</strong>
+              <span>or drag and drop it here (max 20MB)</span>
+            </div>
+            <div class="file-chip" id="fileChip" hidden></div>
+          </label>
+        </div>
+
+        <div class="tab-panel hidden" id="tab-paste">
+          <textarea id="textInput" placeholder="Paste your document text here..." rows="10"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="modeSelect">What do you want to do?</label>
+          <select id="modeSelect">
+            <option value="summarize">Summarize</option>
+            <option value="extract">Extract key information</option>
+            <option value="rewrite">Rewrite &amp; polish</option>
+            <option value="analyze">Deep analysis</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="customInstructions">Custom instructions (optional)</label>
+          <input type="text" id="customInstructions" placeholder="e.g. Focus on financial figures only" />
+        </div>
+
+        <button id="analyzeBtn" class="primary-btn">
+          <span id="btnText">Analyze Document</span>
+          <span id="btnSpinner" class="spinner" hidden></span>
+        </button>
+
+        <p id="errorMsg" class="error-msg" hidden></p>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="output-header">
+          <h2>Result</h2>
+          <div class="output-actions">
+            <button id="copyBtn" class="ghost-btn" hidden>Copy</button>
+            <button id="clearBtn" class="ghost-btn" hidden>Clear</button>
+          </div>
+        </div>
+        <div id="output" class="output-body">
+          <div class="placeholder">
+            <div class="placeholder-icon">✨</div>
+            <p>Your AI-generated result will appear here, streaming in real time.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Document Analyzer · FastAPI + Claude · Deployed on AWS</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
