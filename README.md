@@ -21,8 +21,8 @@ document-analyzer/
 │   ├── styles.css
 │   └── app.js
 ├── deploy/
-│   ├── deploy-apprunner.sh
-│   └── apprunner-trust-policy.json
+│   ├── render.yaml
+│   └── deploy-apprunner.sh
 ├── Dockerfile
 ├── docker-compose.yml
 ├── .env.example
@@ -45,7 +45,7 @@ docker compose up --build
 ```
 Open http://localhost:8080
 
-## 3. Deploy to AWS App Runner
+## 3. Deploy to AWS App Runner/Render 
 Prerequisites: AWS CLI v2 configured (`aws configure`), Docker running, an
 GROQ API key.
 
