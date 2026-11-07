@@ -8,7 +8,7 @@ in live.
 - **Backend:** Python, FastAPI, Groq API, streamed via SSE
 - **Frontend:** Vanilla HTML/CSS/JS (no build step), responsive, renders Markdown
 - **Container:** Single Docker image (FastAPI serves the static frontend + API)
-- **Deploy target:** AWS App Runner (ECR-backed)
+- **Deploy target:** AWS App Runner (ECR-backed)/Render
 
 ## Project layout
 ```
